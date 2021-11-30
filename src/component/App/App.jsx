@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
 import "./App.css";
+import "./VideoPlayer/VideoPlayer";
+import VideoPlayer from "./VideoPlayer/VideoPlayer";
 
 class App extends Component {
     constructor(props) {
@@ -32,6 +34,7 @@ class App extends Component {
         return (
             <div className="container-fluid">
                 <h1>Hello!</h1>
+                <VideoPlayer />
             </div>
         )
     }
