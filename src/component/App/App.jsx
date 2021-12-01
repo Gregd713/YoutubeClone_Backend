@@ -30,12 +30,26 @@ class App extends Component {
         }
     }
 
+    // playMyVideo = (userInput) => {
+    //     let i=0;
+    //     let result = this.state.searchResults.filter((video) => {
+    //         if (userInput.placeHolder === this.state.searchResults.placeHolder) {
+    //             i++;
+    //             return true;
+    //           } else {
+    //               i++;
+    //               return false;
+    //           }
+    //         }
+    //     )
+    // }
+
     render() {
         return (
             <div className="container-fluid">
                 <h1>Hello!</h1>
                 <VideoPlayer />
-                {/* <SearchBar /> */}
+                {/* <SearchBar playTheVideo={this.playMyVideo/> */}
             </div>
         )
     }
