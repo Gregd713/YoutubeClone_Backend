@@ -34,8 +34,8 @@ class App extends Component {
         return (
             <div className="container-fluid">
                 <h1>Hello!</h1>
-                <VideoPlayer searchResults = {this.state.searchResults} />
-                <SearchBar />
+                <VideoPlayer />
+                {/* <SearchBar /> */}
             </div>
         )
     }
