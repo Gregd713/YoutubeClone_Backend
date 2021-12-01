@@ -28,6 +28,20 @@ class App extends Component {
         this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] });
     }
 
+    // playMyVideo = (userInput) => {
+    //     let i=0;
+    //     let result = this.state.searchResults.filter((video) => {
+    //         if (userInput.placeHolder === this.state.searchResults.placeHolder) {
+    //             i++;
+    //             return true;
+    //           } else {
+    //               i++;
+    //               return false;
+    //           }
+    //         }
+    //     )
+    // }
+
     render() {
         const { selectedVideo, videos } = this.state;
         return (
