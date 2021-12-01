@@ -1,41 +1,41 @@
 import React, {Component} from "react";
-import axios from "axios";
+import youtube from "../../api/youtube";
 import "./App.css";
-import "./VideoPlayer/VideoPlayer";
-import VideoPlayer from "./VideoPlayer/VideoPlayer";
+import "../VideoPlayer/VideoPlayer";
+import VideoPlayer from "../VideoPlayer/VideoPlayer";
+import SearchBar from "../SearchBar/SearchBar";
+import VideoList from "../VideoList/VideoList";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            searchResults: []
-        }
-        
+    state = {
+        videos: [],
+        selectedVideo: [],
     }
 
-    componentDidMount() {
-        this.makeGetRequest();
-    }
+    handleSubmit = async (searchTerm) => {
+        const response = await youtube.get('search', { 
+            params: {
+                part: 'snippet',
+                maxResults: 10,
+                key: 'AIzaSyAcOzLVYyqhOxqYNGHLXdqhg3jr-pJhjKg',
+                q: searchTerm,
+            
+            }
+        });
 
-    async makeGetRequest() {
-        try{
-            let response = await axios.get("https://www.googleapis.com/youtube/v3/search?key=AIzaSyAcOzLVYyqhOxqYNGHLXdqhg3jr-pJhjKg&maxResults=10&type=video&videoEmbeddable=true");
-            console.log(response.data);
-            this.setState({
-                searchResults: response.data
-            })
-        }
-        catch{
-            console.log("Error in API call!")
-        }
+        console.log(response.data.items);
+
+        this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] });
     }
 
     render() {
+        const { selectedVideo, videos } = this.state;
         return (
             <div className="container-fluid">
                 <h1>Hello!</h1>
-                <VideoPlayer />
-                {/* <SearchBar /> */}
+                <SearchBar onFormSubmit={this.handleSubmit} />
+                <VideoPlayer video={selectedVideo} />
+                <VideoList videos={ videos } />
             </div>
         )
     }

@@ -1,34 +1,32 @@
 import React, {Component} from "react";
 
-class VideoSearch extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            title: ""
-        };
-    }
+class SearchBar extends Component {
+   state = {
+       searchTerm: '',
+   }
 
     handleChange = (event) => {
         this.setState({
-            [event.target.name]: event.target.value
+            searchTerm: event.target.value
         });
     }
 
     handleSubmit = (event) => {
+        const { searchTerm } = this.state;
+        const { onFormSubmit } = this.props;
+
+        onFormSubmit(searchTerm);
+
         event.preventDefault();
     }
 
     render() {
         return(
             <form onSubmit={this.handleSubmit}>
-                <div className="form-floating mb-3">
-                    <label htmlFor="floatingInput">Search</label>
-                    <input name="title" type="title" className="form-control" id="floatingInput" placeHolder="Insert Text"
-                        onChange={this.handleChange} value={this.state.title}/>
-                </div>
+                <input placeholder="Search..." onChange={this.handleChange}/>
             </form>
         )
     }
 }
 
-export default VideoSearch;
+export default SearchBar;
