@@ -8,7 +8,7 @@ const VideoPlayer = ({ video, videoObject }) => {
             <iframe id="ytplayer" type="text/html" width="640" height="360"
                 src={ videoSrc }
                 frameborder="0">
-            </iframe>)}
+            </iframe>
             <h3>{videoObject}</h3>
         </div>
     )
