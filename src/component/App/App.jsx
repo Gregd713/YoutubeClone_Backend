@@ -23,7 +23,8 @@ class App extends Component {
     }
 
     onSelectVideo = (video) => {
-        this.setState({ selectedVideo: video });
+        this.setState({ selectedVideo: video.id.videoId });
+        console.log(video);
     }
     
     handleSubmit = async (searchTerm) => {
