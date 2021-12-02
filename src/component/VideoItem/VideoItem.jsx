@@ -2,8 +2,12 @@ import React from "react";
 
 const VideoItem = ({ video }) => {
     return(
-        <div className="row-row">
-            <ul><img  src={video.snippet.thumbnails.default.url} /></ul>       
+        <div>
+            <ul>
+                <h4>{video.snippet.title}</h4>
+                <img  src={video.snippet.thumbnails.default.url} />
+                <h4>{video.snippet.description}</h4>
+            </ul>       
         </div>
     )
     
