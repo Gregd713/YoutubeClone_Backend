@@ -4,43 +4,25 @@ import "./App.css";
 import "../VideoPlayer/VideoPlayer";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SearchBar from "../SearchBar/SearchBar";
-import VideoList from "../VideoList/VideoList";
-
+// import VideoList from "../VideoList/VideoList";
 class App extends Component {
     state = {
         videos: [],
-        selectedVideo: [],
+        selectedVideo: null,
     }
-
     handleSubmit = async (searchTerm) => {
-        const response = await youtube.get('search', { 
+        const response = await youtube.get('search', {
             params: {
                 part: 'snippet',
                 maxResults: 10,
                 key: 'AIzaSyAcOzLVYyqhOxqYNGHLXdqhg3jr-pJhjKg',
                 q: searchTerm,
-            
             }
         });
-
         console.log(response.data.items);
-
-        this.setState({ videos: response.data.items, selectedVideo: response.data.items[0] });
+        console.log(response.data.items[0].id.videoId)
+        this.setState({ videos: response.data.items, selectedVideo: response.data.items[0].id.videoId });
     }
-
-    // playMyVideo = (userInput) => {
-    //     let i=0;
-    //     let result = this.state.searchResults.filter((video) => {
-    //         if (userInput.placeHolder === this.state.searchResults.placeHolder) {
-    //             i++;
-    //             return true;
-    //           } else {
-    //               i++;
-    //               return false;
-    //           }
-    //         }
-    //     )
-    // }
 
     render() {
         const { selectedVideo, videos } = this.state;
@@ -49,10 +31,9 @@ class App extends Component {
                 <h1>Hello!</h1>
                 <SearchBar onFormSubmit={this.handleSubmit} />
                 <VideoPlayer video={selectedVideo} />
-                <VideoList videos={ videos } />
+                {/* <VideoList videos={ videos } /> */}
             </div>
         )
     }
 }
-
 export default App;
