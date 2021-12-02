@@ -5,10 +5,14 @@ import "../VideoPlayer/VideoPlayer";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SearchBar from "../SearchBar/SearchBar";
 import VideoList from "../VideoList/VideoList";
+import axios from "axios";
+
+
+
 class App extends Component {
     state = {
         videos: [],
-        selectedVideo: null,
+        selectedVideo: ['XEt09iK8IXs'],
     }
     handleSubmit = async (searchTerm) => {
         const response = await youtube.get('search', {
@@ -24,14 +28,16 @@ class App extends Component {
         this.setState({ videos: response.data.items, selectedVideo: response.data.items[0].id.videoId });
     }
 
+    
+
     render() {
-        const { selectedVideo, videos } = this.state;
+        // const { selectedVideo, videos } = this.state;
         return (
             <div className="container-fluid">
                 <h1>Hello!</h1>
                 <SearchBar onFormSubmit={this.handleSubmit} />
-                <VideoPlayer video={selectedVideo} />
-                <VideoList videos={ videos } />
+                <VideoPlayer video={this.state.selectedVideo} />
+                <VideoList videos={ this.state.videos } />
             </div>
         )
     }
