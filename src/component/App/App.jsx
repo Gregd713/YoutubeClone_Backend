@@ -13,7 +13,7 @@ class App extends Component {
     state = {
         videos: [],
         selectedVideo: ['XEt09iK8IXs'],
-        object: null,
+        object: "Coding interviews (default video)",
     }
     handleSubmit = async (searchTerm) => {
         const response = await youtube.get('search', {
