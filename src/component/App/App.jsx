@@ -1,10 +1,12 @@
 import React, {Component} from "react";
 import youtube from "../../api/youtube";
+import bootstrap from 'bootstrap';
 import "./App.css";
 import "../VideoPlayer/VideoPlayer";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SearchBar from "../SearchBar/SearchBar";
 import VideoList from "../VideoList/VideoList";
+import TitleBar from "../TitleBar/TitleBar"
 import axios from "axios";
 
 
@@ -44,7 +46,7 @@ class App extends Component {
     render() {
         return (
             <div className="container-fluid">
-                <h1>Hello!</h1>
+                <titleBar/>
                 <SearchBar onFormSubmit={this.handleSubmit} />
                 <VideoPlayer video={this.state.selectedVideo} videoObject={this.state.object} />
                 <VideoList videos={ this.state.videos } onSelectVideo={this.onSelectVideo} />

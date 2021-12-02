@@ -1,0 +1,19 @@
+.container-fluid{
+    background-color: rgb(88, 133, 22);
+    padding: 0;
+}
+.navbar{
+    padding:0;
+}
+.d-flex{
+    background-color:  rgb(88, 133, 22);
+}
+.btn{
+    color:black;
+    background-color: rgb(70, 70, 70);
+
+}
+.show>.dropdown-menu {
+    display: block;
+    position: absolute;
+  }
