@@ -13,6 +13,7 @@ class App extends Component {
     state = {
         videos: [],
         selectedVideo: ['XEt09iK8IXs'],
+        object: null,
     }
     handleSubmit = async (searchTerm) => {
         const response = await youtube.get('search', {
@@ -24,8 +25,9 @@ class App extends Component {
             }
         });
         console.log(response.data.items);
-        console.log(response.data.items[0].id.videoId)
-        this.setState({ videos: response.data.items, selectedVideo: response.data.items[0].id.videoId });
+        console.log(response.data.items[0].id.videoId);
+        console.log(response.data.items[0].snippet.title);
+        this.setState({ videos: response.data.items, selectedVideo: response.data.items[0].id.videoId, object: response.data.items[0].snippet.title });
     }
 
     
@@ -36,7 +38,7 @@ class App extends Component {
             <div className="container-fluid">
                 <h1>Hello!</h1>
                 <SearchBar onFormSubmit={this.handleSubmit} />
-                <VideoPlayer video={this.state.selectedVideo} />
+                <VideoPlayer video={this.state.selectedVideo} videoObject={this.state.object} />
                 <VideoList videos={ this.state.videos } />
             </div>
         )
