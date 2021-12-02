@@ -4,7 +4,7 @@ import "./App.css";
 import "../VideoPlayer/VideoPlayer";
 import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SearchBar from "../SearchBar/SearchBar";
-// import VideoList from "../VideoList/VideoList";
+import VideoList from "../VideoList/VideoList";
 class App extends Component {
     state = {
         videos: [],
@@ -31,7 +31,7 @@ class App extends Component {
                 <h1>Hello!</h1>
                 <SearchBar onFormSubmit={this.handleSubmit} />
                 <VideoPlayer video={selectedVideo} />
-                {/* <VideoList videos={ videos } /> */}
+                <VideoList videos={ videos } />
             </div>
         )
     }
