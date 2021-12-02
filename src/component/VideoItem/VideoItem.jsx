@@ -1,6 +1,6 @@
 import React from "react";
 
-const VideoItem = ({ video }) => {
+const VideoItem = ({ video, onSelectVideo  }) => {
     return(
         // <div>
         //     <ul>
@@ -11,9 +11,9 @@ const VideoItem = ({ video }) => {
         // </div>
         <table>
         <tr>
-            <td><img  src={video.snippet.thumbnails.default.url} /></td>
+            <td><button onClick={() => onSelectVideo(video)}><img  src={video.snippet.thumbnails.default.url} /></button></td>
             <h4>{video.snippet.title}</h4>
-            <h4>{video.snippet.description}</h4>
+            <h4>{video.snippet.description}</h4>   
         </tr>
         </table>
     )

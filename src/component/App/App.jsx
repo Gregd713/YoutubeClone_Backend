@@ -12,12 +12,16 @@ import axios from "axios";
 class App extends Component {
     state = {
         videos: [],
-        selectedVideo: [],
+        selectedVideo: null,
         object: null,
     }
     
     componentDidMount(){
         this.handleSubmit("Never gonna give you up")
+    }
+
+    onSelectVideo = (video) => {
+        this.setState({ selectedVideo: video });
     }
     
     handleSubmit = async (searchTerm) => {
@@ -25,7 +29,7 @@ class App extends Component {
             params: {
                 part: 'snippet',
                 maxResults: 10,
-                key: 'AIzaSyAcOzLVYyqhOxqYNGHLXdqhg3jr-pJhjKg',
+                key: 'AIzaSyDI-sdoEjiTD987J5oSxaBom19EQCuFfM4',
                 q: searchTerm,
             }
         });
@@ -38,13 +42,12 @@ class App extends Component {
     
 
     render() {
-        // const { selectedVideo, videos } = this.state;
         return (
             <div className="container-fluid">
                 <h1>Hello!</h1>
                 <SearchBar onFormSubmit={this.handleSubmit} />
                 <VideoPlayer video={this.state.selectedVideo} videoObject={this.state.object} />
-                <VideoList videos={ this.state.videos } />
+                <VideoList videos={ this.state.videos } onSelectVideo={this.onSelectVideo} />
             </div>
         )
     }
