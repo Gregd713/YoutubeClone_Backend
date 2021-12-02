@@ -14,9 +14,14 @@ import axios from "axios";
 class App extends Component {
     state = {
         videos: [],
-        selectedVideo: ['XEt09iK8IXs'],
+        selectedVideo: [],
         object: null,
     }
+    
+    componentDidMount(){
+        this.handleSubmit("Never gonna give you up")
+    }
+    
     handleSubmit = async (searchTerm) => {
         const response = await youtube.get('search', {
             params: {
