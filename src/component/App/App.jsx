@@ -23,7 +23,7 @@ class App extends Component {
     }
 
     onSelectVideo = (video) => {
-        this.setState({ selectedVideo: video.id.videoId });
+        this.setState({ selectedVideo: video.id.videoId, object: video.snippet.title });
         console.log(video);
     }
     
