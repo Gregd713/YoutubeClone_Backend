@@ -15,12 +15,17 @@ import pageLayout from "../PageLayout/Pagelayout";
 class App extends Component {
     state = {
         videos: [],
-        selectedVideo: [],
+        selectedVideo: null,
         object: null,
     }
     
     componentDidMount(){
         this.handleSubmit("Never gonna give you up")
+    }
+
+    onSelectVideo = (video) => {
+        this.setState({ selectedVideo: video.id.videoId });
+        console.log(video);
     }
     
     handleSubmit = async (searchTerm) => {
@@ -41,13 +46,12 @@ class App extends Component {
     
 
     render() {
-        // const { selectedVideo, videos } = this.state;
         return (
             <div className="container-fluid">
                 <TitleBar/>
                 <SearchBar onFormSubmit={this.handleSubmit} />
                 <VideoPlayer video={this.state.selectedVideo} videoObject={this.state.object} />
-                <VideoList videos={ this.state.videos } />
+                <VideoList videos={ this.state.videos } onSelectVideo={this.onSelectVideo} />
             </div>
         )
     }
