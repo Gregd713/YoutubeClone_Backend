@@ -7,6 +7,7 @@ import VideoPlayer from "../VideoPlayer/VideoPlayer";
 import SearchBar from "../SearchBar/SearchBar";
 import VideoList from "../VideoList/VideoList";
 import TitleBar from "../TitleBar/TitleBar"
+import CommentSection from "../CommentSection/CommentSection";
 import axios from "axios";
 import pageLayout from "../PageLayout/Pagelayout";
 
@@ -51,6 +52,7 @@ class App extends Component {
                 <TitleBar/>
                 <SearchBar onFormSubmit={this.handleSubmit} />
                 <VideoPlayer video={this.state.selectedVideo} videoObject={this.state.object} />
+                <CommentSection/>
                 <VideoList videos={ this.state.videos } onSelectVideo={this.onSelectVideo} />
             </div>
         )
