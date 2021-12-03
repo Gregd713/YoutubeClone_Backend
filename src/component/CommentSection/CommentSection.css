@@ -1,0 +1,9 @@
+.link-muted { color: #aaa; } .link-muted:hover { color: #1266f1; }
+
+.myImage {
+    width: 60px;
+    height: 60px;
+    background-image: url("Thumb-up-icon.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
