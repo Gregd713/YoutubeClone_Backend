@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import "./SearchBar.css";
 class SearchBar extends Component {
    state = {
        searchTerm: '',
@@ -22,9 +22,12 @@ class SearchBar extends Component {
 
     render() {
         return(
+            <div classname="search">
             <form onSubmit={this.handleSubmit}>
                 <input placeholder="Search..." onChange={this.handleChange}/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            </div>
         )
     }
 }

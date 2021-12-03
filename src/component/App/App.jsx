@@ -8,6 +8,7 @@ import SearchBar from "../SearchBar/SearchBar";
 import VideoList from "../VideoList/VideoList";
 import TitleBar from "../TitleBar/TitleBar"
 import axios from "axios";
+import pageLayout from "../PageLayout/Pagelayout";
 
 
 
@@ -27,7 +28,7 @@ class App extends Component {
             params: {
                 part: 'snippet',
                 maxResults: 10,
-                key: 'AIzaSyAcOzLVYyqhOxqYNGHLXdqhg3jr-pJhjKg',
+                key: 'AIzaSyDI-sdoEjiTD987J5oSxaBom19EQCuFfM4',
                 q: searchTerm,
             }
         });
@@ -43,7 +44,7 @@ class App extends Component {
         // const { selectedVideo, videos } = this.state;
         return (
             <div className="container-fluid">
-                <titleBar/>
+                <TitleBar/>
                 <SearchBar onFormSubmit={this.handleSubmit} />
                 <VideoPlayer video={this.state.selectedVideo} videoObject={this.state.object} />
                 <VideoList videos={ this.state.videos } />
